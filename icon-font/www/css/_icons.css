@@ -1,0 +1,37 @@
+
+
+.iconFont-share:before {
+	content: "\E001";
+}
+
+.iconFont-zoom-right:before {
+	content: "\E002";
+}
+
+.iconFont-zoom-left:before {
+	content: "\E003";
+}
+
+.iconFont-zoom-in:before {
+	content: "\E004";
+}
+
+.iconFont-zoom-out:before {
+	content: "\E005";
+}
+
+.iconFont-pause:before {
+	content: "\E006";
+}
+
+.iconFont-play:before {
+	content: "\E007";
+}
+
+.iconFont-search:before {
+	content: "\E008";
+}
+
+.iconFont-attribution:before {
+	content: "\E009";
+}

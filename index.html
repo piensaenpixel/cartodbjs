@@ -1,0 +1,955 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"> 
+  <title>Your Website</title>
+  <link href="cartodbjs.css" rel="stylesheet" type="text/css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link href="css/prism.css" rel="stylesheet" />
+  <link href="css/landing.css" rel="stylesheet" />
+
+</head>
+
+<body class="white">
+
+<div class="container">
+
+  <header class="hdr">
+    <h1>Cartodbjs's components</h1>
+    <ul class="lst-hdr">
+      <li class="active"><a href="#" id="white">White</a></li>
+      <li><a href="#" id="grey">Grey</a></li>
+      <li><a href="#"id="dark">Dark</a></li>
+    </ul>
+  </header>
+
+  <div class="component-download">
+  	<p><a href="cartodbjs-components.zip">Download files</a></p>
+  </div>
+
+  <div class="component-inner">
+  	<h2 class="component-title">Generic Markup and CSS</h2>
+    <p class="component-txt">"cdb-" is the namespace that we are going to use for all the components. We do this for avoid conflicts with other libraries which could use similar class names</p>
+
+    <ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+							/* Module name (we need for js) */
+							&lt;div class="module-name">
+							  /* cdb-name == component name */
+							  &lt;div class="cartodb-component cdb-name">
+							    Content
+							 	&lt;/div>
+							&lt;/div>
+          </code>
+        </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+          <code class="language-css">
+						.cartodb-component * {
+						  -moz-box-sizing: border-box;
+						  -webkit-box-sizing: border-box;
+						  box-sizing: border-box;
+						}
+						.cartodb-component {
+						  position: relative;
+						  float:left;
+						  clear:left;
+						  background: rgba(255, 255, 255, .95);
+						  border-radius: 4px;
+						  margin-bottom: 20px;
+						  color: #999;
+						  font-family: Helvetica, Arial;
+						  text-rendering: optimizeLegibility;
+						  -webkit-text-rendering: optimizeLegibility;
+						  -webkit-font-smoothing: antialiased;
+						  text-align: center;
+						  line-height: 30px;
+						} 
+						.cartodb-component ul {
+						  position: relative;
+						  z-index: 4;
+						  list-style-type: none;
+						}
+						.cartodb-component:before {
+						  content: "";
+						  position: absolute;
+						  top: -1px;
+						  right: -1px;
+						  bottom: -1px;
+						  left: -1px;
+						  border: 1px solid rgba(0, 0, 0, .1);
+						  border-radius: 4px;
+						}
+						.cartodb-component:hover {
+						  background: #fff;
+						  background: rgba(255, 255, 255, 1);
+						  color: #666;
+						}
+						.cartodb-component a {
+						  position: relative;
+						  color: #999;
+						  text-decoration: none;
+						  display: block;
+						  width: 30px;
+						  height: 30px;
+						  transition: 200ms color ease-in;
+						  -webkit-transition: 200ms color ease-in;
+						}
+						.cartodb-component a:hover {
+						  color: #666;
+						}
+          </code>
+        </pre>
+      </li>
+    </ul>
+
+  </div>
+  <div class="component-inner">
+  	<h2 class="component-title">Fonts</h2>
+    <ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+							/* you can use any tag */
+							&lt;a href="#" class="icon icon-medium iconFont-zoom-in">&lt;/a>
+          </code>
+        </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+          <code class="language-css">
+						@font-face {
+						    font-family: 'cartodbComponent';
+						    src: url('fonts/cartodbComponent.eot');
+						    src: url('fonts/cartodbComponent.eot?#iefix') format('embedded-opentype'),
+						         url('fonts/cartodbComponent.woff') format('woff'),
+						         url('fonts/cartodbComponent.ttf') format('truetype'),
+						         url('fonts/cartodbComponent.svg#cartodbComponent') format('svg');
+						    font-weight: normal;
+						    font-style: normal;
+
+						}
+						.iconFont-share:before {
+						  content: "\E001";
+						}
+						.iconFont-zoom-right:before {
+						  content: "\E002";
+						}
+						.iconFont-zoom-left:before {
+						  content: "\E003";
+						}
+						.iconFont-zoom-in:before {
+						  content: "\E004";
+						}
+						.iconFont-zoom-out:before {
+						  content: "\E005";
+						}
+						.iconFont-pause:before {
+						  content: "\E006";
+						}
+						.iconFont-play:before {
+						  content: "\E007";
+						}
+						.iconFont-search:before {
+						  content: "\E008";
+						}
+						.iconFont-attribution:before {
+						  content: "\E009";
+						}
+
+						/* icon sizes */
+						.icon { 
+						    font-family: 'cartodbComponent';
+						    font-size: 14px;
+						}
+						.icon-medium {
+						  font-size: 12px;
+						}
+						.icon-small {
+						  font-size: 6px;
+						}
+          </code>
+        </pre>
+      </li>
+    </ul>
+
+  </div>
+
+
+
+
+  <!-- zoom -->
+  <div class="component-inner">
+		<h2 class="component-title">Zoom component</h2>
+    <div class="cartodb-zoom">
+      <div class="cartodb-component cdb-zoom">
+        <ul>
+          <li>
+            <a href="#" class="icon icon-medium iconFont-zoom-in"></a>
+          </li>
+          <li>
+            <a href="#" class="icon icon-medium iconFont-zoom-out"></a>
+          </li>
+        </ul>
+        <div class="cdb-zoom-info">
+          6
+        </div>
+      </div>
+    </div>
+    <ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+						&lt;div class="cartodb-zoom">
+						  &lt;div class="cartodb-component cdb-zoom">
+						    &lt;ul>
+						      &lt;li>
+						        &lt;a href="#" class="icon icon-medium iconFont-zoom-in">&lt;/a>
+						      &lt;/li>
+						      &lt;li>
+						        &lt;a href="#" class="icon icon-medium iconFont-zoom-out">&lt;/a>
+						      &lt;/li>
+						    &lt;/ul>
+						    &lt;div class="cdb-zoom-info">
+						      6
+						    &lt;/div>
+						  &lt;/div>
+						&lt;/div>
+          </code>
+        </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+          <code class="language-css">
+						.cdb-zoom li {
+						  display: inline-block;
+						  margin-left: -5px;
+						  border-left: 1px solid rgba(0, 0, 0, .1);
+						}
+						.cdb-zoom li:first-child {
+						  border-left: 0;
+						  margin: 0;
+						} 
+						.cdb-zoom-info {
+						  background: #3A4249;
+						  color: #fff;
+						  border-bottom-left-radius: 3px;
+						  border-bottom-right-radius: 3px;
+						  font-size: 13px;
+						  line-height: 23px;
+						}
+          </code>
+        </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- zoom -->
+  <div class="component-inner">
+    <div class="cartodb-zoom">
+      <div class="cartodb-component cdb-zoom">
+        <ul>
+          <li>
+            <a href="#" class="icon icon-medium iconFont-zoom-in"></a>
+          </li>
+          <li>
+            <a href="#" class="icon icon-medium iconFont-zoom-out"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+							&lt;div class="cartodb-zoom">
+							  &lt;div class="cartodb-component cdb-zoom">
+							    &lt;ul>
+							      &lt;li>
+							        &lt;a href="#" class="icon icon-medium iconFont-zoom-in">&lt;/a>
+							      &lt;/li>
+							      &lt;li>
+							        &lt;a href="#" class="icon icon-medium iconFont-zoom-out">&lt;/a>
+							      &lt;/li>
+							    &lt;/ul>
+							  &lt;/div>
+							&lt;/div>
+          </code>
+        </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+          <code class="language-css">
+						.cdb-zoom li {
+						  display: inline-block;
+						  margin-left: -5px;
+						  border-left: 1px solid rgba(0, 0, 0, .1);
+						}
+						.cdb-zoom li:first-child {
+						  border-left: 0;
+						  margin: 0;
+						}
+          </code>
+        </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- fullscreen -->
+  <div class="component-inner">
+		<h2 class="component-title">Fullscreen component</h2>
+    <div class="cartodb-fullscreen">
+      <div class="cartodb-component cdb-fullscreen">
+        <a href="#">
+          <span class="icon icon-small iconFont-zoom-right"></span>
+          <span class="icon icon-small iconFont-zoom-left"></span>
+        </a>
+      </div>
+    </div>
+    <ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+						&lt;div class="cartodb-component cdb-fullscreen">
+						  &lt;a href="#">
+						    &lt;span class="icon icon-small iconFont-zoom-right">&lt;/span>
+						    &lt;span class="icon icon-small iconFont-zoom-left">&lt;/span>
+						  &lt;/a>
+						&lt;/div>
+          </code>
+        </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+          <code class="language-css">
+						.cdb-fullscreen .icon {
+						  transition: 200ms all ease-in;
+						  -webkit-transition: 200ms all ease-in;
+						  position: absolute;
+						}
+						.cdb-fullscreen .iconFont-zoom-right {
+						  right: 8px;
+						  top: -4px;
+						}
+						.cdb-fullscreen .iconFont-zoom-left {
+						  left: 8px;
+						  bottom: -4px;
+						}
+						.cdb-fullscreen:hover .iconFont-zoom-right {
+						  right: 5px;
+						  top: -6px;
+						}
+						.cdb-fullscreen:hover .iconFont-zoom-left {
+						  left: 5px;
+						  bottom: -6px;
+						}
+          </code>
+        </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- share -->
+  <div class="component-inner">
+		<h2 class="component-title">Share component</h2>
+    <div class="cartodb-share">
+      <div class="cartodb-component cdb-share">
+        <a href="#" class="icon iconFont-share">
+        </a>
+      </div>
+    </div>
+    <ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+						&lt;div class="cartodb-component cdb-share">
+						  &lt;a href="#" class="icon iconFont-share">
+						  &lt;/a>
+						&lt;/div>
+          </code>
+        </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+          <code class="language-css">
+						.cdb-share .icon {
+						  margin-left: -2px;
+						}
+          </code>
+        </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- legends -->
+  <div class="component-inner">
+		<h2 class="component-title">Legends component</h2>
+    <div class="cartodb-legends">
+      <div class="cartodb-component cdb-legends">
+        <h2 class="cdb-legends-title">Legend's title</h2>
+        <ul>
+          <li>
+            <span class="cdb-bullet" style="background-color: #A6CEE3"></span>
+            <p class="cdb-legends-text">40</p>
+          </li>
+          <li>
+            <span class="cdb-bullet" style="background: #B2DF8A;"></span>
+            <p class="cdb-legends-text">40</p>
+          </li>
+          <li>
+            <span class="cdb-bullet" style="background: #FF7F00"></span>
+            <p class="cdb-legends-text">40</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- timeslider -->
+  <div class="component-inner">
+		<h2 class="component-title">Timeslider component</h2>
+    <div class="cartodb-timeslider">
+      <div class="cartodb-component cdb-timeslider" style="width: 100%;">
+        <div class="cdb-timeslider-media">
+          <div class="cdb-controls">
+            <a href="#" class="icon icon-medium iconFont-pause"></a>
+          </div>
+          <div class="cdb-time">
+            02:48
+          </div>
+        </div>
+        <div class="cdb-slider">
+          <div class="slider">
+            <span style="width: 100px;">
+              <span class="icon icon-drag">
+                <span class="icon icon-small iconFont-pause"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+		<ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+						&lt;div class="cartodb-timeslider">
+						  &lt;div class="cartodb-component cdb-timeslider" style="width: 100%;">
+						    &lt;div class="cdb-timeslider-media">
+						      &lt;div class="cdb-controls">
+						        &lt;a href="#" class="icon icon-medium iconFont-pause">
+						        &lt;/a>
+						      &lt;/div>
+						      &lt;div class="cdb-time">
+						        02:48
+						      &lt;/div>
+						    &lt;/div>
+						    &lt;div class="cdb-slider">
+						      &lt;div class="slider">
+						        &lt;span style="width: 100px;">
+						          &lt;span class="icon icon-drag">
+						            &lt;span class="icon icon-small iconFont-pause">&lt;/span>
+						          &lt;/span>
+						        &lt;/span>
+						      &lt;/div>
+						    &lt;/div>
+						  &lt;/div>
+						&lt;/div>
+          </code>
+        </pre>
+      </li>
+      <li>
+          <h2 class="lst-markup-title">CSS</h2>
+          <pre>
+            <code class="language-css">
+							.cdb-timeslider {
+							  font-size: 13px;
+							  line-height: 12px;
+							}
+							.cdb-timeslider-media {
+							  float: left;
+							}
+							.cdb-controls {
+							  display: inline-block;
+							  vertical-align: middle;
+							  height: 40px;
+							  width: 50px;
+							}
+							.cdb-controls:before {
+							  content:"";
+							  height: 100%;
+							  display: inline-block;
+							  vertical-align: middle;
+							  width: 1px;
+							}
+							.cdb-controls a {
+							  display: inline-block;
+							  vertical-align: middle;
+							  width: 30px;
+							  height: 28px;
+							  position: relative;
+							  z-index: 4;
+							  margin-left: -5px;
+							}
+							.cdb-time {
+							  display: inline-block;
+							  vertical-align: middle;
+							  line-height: 40px;
+							  border-left: 1px solid #ccc;
+							  border-left: 1px solid rgba(0, 0, 0, .1);
+							  margin-left: -5px;
+							  width: 70px;
+							}
+							.cdb-slider {
+							  display: block;
+							  overflow: hidden;
+							  border-left: 1px solid #ccc;
+							  border-left: 1px solid rgba(0, 0, 0, .1);
+							  height: 40px;
+							  padding: 18px 20px;
+							}
+							.slider {
+							  display: block;
+							  height: 4px;
+							  background: #CCC;
+							  border-radius: 50px;
+							  text-align: left;
+							}
+							.slider > span {
+							  display: inline-block;
+							  background: #397DBA;
+							  border-radius: 50px;
+							  vertical-align: top;
+							  height: 4px;
+							  position: relative;
+							}
+							.icon-drag {
+							  width: 13px;
+							  height: 13px;
+							  border-radius: 2px;
+							  background: #fff;
+							  z-index: 3;
+							  position: absolute;
+							  right: 0;
+							  top: -5px;
+							  border: 1px solid #999;
+							  cursor: pointer;
+							  text-align: center;
+							}
+							.icon-drag:before {
+							  content:"";
+							  height: 11px;
+							  display: inline-block;
+							}
+							.icon-drag .icon {
+							  margin-left: -3px;
+							  vertical-align: middle;
+							  display: inline-block;
+							  margin-top: -5px
+							}
+          </code>
+        </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- timeslider -->
+  <div class="component-inner">
+    <div class="cartodb-timeslider">
+      <div class="cartodb-component cdb-timeslider" style="width: 100%;">
+        <div class="cdb-timeslider-media">
+          <div class="cdb-controls">
+            <a href="#" class="icon icon-medium iconFont-play"></a>
+          </div>
+          <div class="cdb-time">
+            02:48
+          </div>
+        </div>
+        <div class="cdb-slider">
+          <div class="slider">
+            <span style="width: 20px;">
+              <span class="icon icon-drag">
+                <span class="icon icon-small iconFont-pause"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+		<ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+						&lt;div class="cartodb-timeslider">
+						  &lt;div class="cartodb-component cdb-timeslider" style="width: 100%;">
+						    &lt;div class="cdb-timeslider-media">
+						      &lt;div class="cdb-controls">
+						        &lt;a href="#" class="icon icon-medium iconFont-play">
+						        &lt;/a>
+						      &lt;/div>
+						      &lt;div class="cdb-time">
+						        02:48
+						      &lt;/div>
+						    &lt;/div>
+						    &lt;div class="cdb-slider">
+						      &lt;div class="slider">
+						        &lt;span style="width: 100px;">
+						          &lt;span class="icon icon-drag">
+						            &lt;span class="icon icon-small iconFont-pause">&lt;/span>
+						          &lt;/span>
+						        &lt;/span>
+						      &lt;/div>
+						    &lt;/div>
+						  &lt;/div>
+						&lt;/div> 
+          </code>
+        </pre>
+      </li>
+
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+            <code class="language-css">
+							.cdb-timeslider {
+							  font-size: 13px;
+							  line-height: 12px;
+							}
+							.cdb-timeslider-media {
+							  float: left;
+							}
+							.cdb-controls {
+							  display: inline-block;
+							  vertical-align: middle;
+							  height: 40px;
+							  width: 50px;
+							}
+							.cdb-controls:before {
+							  content:"";
+							  height: 100%;
+							  display: inline-block;
+							  vertical-align: middle;
+							  width: 1px;
+							}
+							.cdb-controls a {
+							  display: inline-block;
+							  vertical-align: middle;
+							  width: 30px;
+							  height: 28px;
+							  position: relative;
+							  z-index: 4;
+							  margin-left: -5px;
+							}
+							.cdb-time {
+							  display: inline-block;
+							  vertical-align: middle;
+							  line-height: 40px;
+							  border-left: 1px solid #ccc;
+							  border-left: 1px solid rgba(0, 0, 0, .1);
+							  margin-left: -5px;
+							  width: 70px;
+							}
+							.cdb-slider {
+							  display: block;
+							  overflow: hidden;
+							  border-left: 1px solid #ccc;
+							  border-left: 1px solid rgba(0, 0, 0, .1);
+							  height: 40px;
+							  padding: 18px 20px;
+							}
+							.slider {
+							  display: block;
+							  height: 4px;
+							  background: #CCC;
+							  border-radius: 50px;
+							  text-align: left;
+							}
+							.slider > span {
+							  display: inline-block;
+							  background: #397DBA;
+							  border-radius: 50px;
+							  vertical-align: top;
+							  height: 4px;
+							  position: relative;
+							}
+							.icon-drag {
+							  width: 13px;
+							  height: 13px;
+							  border-radius: 2px;
+							  background: #fff;
+							  z-index: 3;
+							  position: absolute;
+							  right: 0;
+							  top: -5px;
+							  border: 1px solid #999;
+							  cursor: pointer;
+							  text-align: center;
+							}
+							.icon-drag:before {
+							  content:"";
+							  height: 11px;
+							  display: inline-block;
+							}
+							.icon-drag .icon {
+							  margin-left: -3px;
+							  vertical-align: middle;
+							  display: inline-block;
+							  margin-top: -5px
+							}
+          </code>
+        </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- layer selector -->
+  <div class="component-inner">
+		<h2 class="component-title">Layer selector component</h2>
+    <div class="cartodb-layer-selector-box">
+      <div class="cartodb-component cdb-layerselector">
+        <p class="cdb-layerselector-title">Visible layers</p>
+        <span class="cdb-layerselector-number">2</span>
+      </div>
+    </div>
+		<ul class="lst-markup">
+      <li>
+          <h2 class="lst-markup-title">HTML</h2>
+          <pre>
+            <code class="language-markup">
+							&lt;div class="cartodb-layer-selector-box">
+							  &lt;div class="cartodb-component cdb-layerselector">
+							    &lt;p class="cdb-layerselector-title">Visible layers&lt;/p>
+							    &lt;span class="cdb-layerselector-number">2&lt;/span>
+							  &lt;/div>
+							&lt;/div>
+            </code>
+          </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+          <code class="language-css">
+						.cdb-layerselector {
+						  width: 140px;
+						  padding: 0 8px;
+						  cursor: pointer;
+						}
+						.cdb-layerselector:after {
+						  content:"";
+						  display: block;
+						  clear: both;
+						  width: 100%;
+						}
+						.cdb-layerselector-title {
+						  font-size: 13px;
+						  float: left;
+						}
+						.cdb-layerselector-number {
+						  float: right;
+						  background: #999;
+						  border-radius: 2px;
+						  color: #fff;
+						  font-weight: bold;
+						  font-size: 10px;
+						  line-height: 11px;
+						  padding: 2px 4px;
+						  margin-top: 7px;
+						}
+	        </code>
+	      </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- search selector -->
+  <div class="component-inner">
+		<h2 class="component-title">Searchbox component</h2>
+    <div class="cartodb-searchbox">
+      <div class="cartodb-component cdb-search">
+        <form class="cdb-search-form">
+            <button class="cdb-search-submit" id="cdb-search-action">
+              <span class="icon iconFont-search"></span>
+            </button>
+            <input type="text" class="cdb-search-text" value="">
+        </form>
+      </div>
+    </div>
+		<ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+						&lt;div class="cartodb-searchbox">
+						  &lt;div class="cartodb-component cdb-search">
+						    &lt;form class="cdb-search-form">
+						        &lt;input type="text" class="cdb-search-text" value="">
+						        &lt;button class="cdb-search-submit">
+						        &lt;span class="icon iconFont-search">&lt;/span>
+						        &lt;/button>
+						    &lt;/form>
+						  &lt;/div>
+						&lt;/div>
+          </code>
+        </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+	        <pre>
+	          <code class="language-css">
+							.cdb-search {
+							  width: 140px;
+							  padding: 0 8px;
+							  height: 30px;
+							}
+							.cdb-search:after {
+							  content:"";
+							  display: block;
+							  clear: both;
+							  width: 100%;
+							}
+							.cdb-search-form {
+							  position: relative;
+							  z-index: 5;
+							}
+							.cdb-search-text {
+							  float: right;
+							  border: 0;
+							  border-bottom: 1px dotted #555;
+							  transition: 200ms border ease-in;
+							  -webkit-transition: 200ms border ease-in;
+							  font: 13px Helvetica, Arial;
+							  color: #666;
+							  width: 112px;
+							  margin-top: 6px;
+							  background: none;
+							} 
+							.cdb-search-text:focus {
+							  outline: none;
+							  border-bottom: 1px dotted #ccc;
+							}
+							.cdb-search-submit {
+							  border: 0;
+							  background: none; 
+							  margin: 8px 0 0 0;
+							  padding: 0;
+							  cursor: pointer;
+							  color: #999;
+							  transition: 200ms color ease-in;
+							  -webkit-transition: 200ms color ease-in;
+							}
+							.cdb-search-submit:hover {
+							  color: #666;
+							}
+							.cdb-search-submit:active {
+							  outline: none;
+							   color: #999;
+							}
+	        </code>
+	      </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- attributions -->
+  <div class="component-inner">
+		<h2 class="component-title">Attributions component</h2>
+    <div class="cartodb-attributions">
+      <div class="cartodb-component cdb-attribution">
+        <a href="#" class="icon iconFont-attribution"></a>
+      </div>
+    </div>
+		<ul class="lst-markup">
+      <li>
+        <h2 class="lst-markup-title">HTML</h2>
+        <pre>
+          <code class="language-markup">
+						&lt;div class="cartodb-attribution">
+						  &lt;div class="cartodb-component cdb-attribution">
+						    &lt;a href="#" class="icon iconFont-attribution">&lt;/a>
+						  &lt;/div>
+						&lt;/div>
+          </code>
+        </pre>
+      </li>
+      <li>
+        <h2 class="lst-markup-title">CSS</h2>
+        <pre>
+          <code class="language-css">
+						
+        	</code>
+	      </pre>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="component-download">
+  	<p><a href="cartodbjs-components.zip">Download files</a></p>
+  </div>
+
+
+</div>
+
+<script src="prism.js" data-manual></script>
+<script>
+  $( document ).ready(function() {
+    $( ".lst-hdr li" ).click(function() {
+      $('.lst-hdr li').removeClass('active');
+      $(this).toggleClass( "active" );
+      $(this).addClass( "active" );
+    });
+
+    $( "#white" ).click(function() {
+      $('body').removeClass();
+      $('body').addClass( "white" );
+    });
+
+    $( "#grey" ).click(function() {
+      $('body').removeClass();
+      $('body').addClass( "grey" );
+    });
+    $( "#dark" ).click(function() {
+      $('body').removeClass();
+      $('body').addClass( "dark" );
+    });
+
+    $( "#cdb-search-action" ).click(function(e) {
+      $('.cdb-search').width("124px");
+      $('.cdb-search-form').width("auto");
+      $('.cdb-search-form').css( "margin-left", "0" );
+      e.preventDefault()
+    });
+  });
+</script>
+
+</body>
+
+</html>
